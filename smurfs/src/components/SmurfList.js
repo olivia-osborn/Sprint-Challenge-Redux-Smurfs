@@ -1,29 +1,12 @@
 import React from "react";
+import Smurf from "./Smurf";
 
 function SmurfList(props) {
     return (
         <div>
-            <form>
-                <input
-                    type="text"
-                    placeholder="name"
-                    name="name"
-                    onChange={props.handleChanges}
-                />
-                <input
-                    type="text"
-                    placeholder="age"
-                    name="age"
-                    onChange={props.handleChanges}
-                />
-                <input
-                    type="text"
-                    placeholder="height"
-                    name="height"
-                    onChange={props.handleChanges}
-                />
-                <button onClick={props.addSmurf}>Submit Smurf</button>
-            </form>
+            {props.smurfList.map(smurf => {
+                return <Smurf smurf={smurf} key={smurf.id} />
+            })}
         </div>
     )
 }

@@ -12,7 +12,7 @@ export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE";
 export const getSmurfs = () => dispatch => {
   dispatch({type: FETCHING_SMURFS_START});
   axios
-    .get("http://localhost:3333/smurfs")
+    .get("http://localhost:3333/smfurfs")
     .then(response => {
       console.log(response)
       dispatch({type: FETCHING_SMURFS_SUCCESS, payload: response.data})

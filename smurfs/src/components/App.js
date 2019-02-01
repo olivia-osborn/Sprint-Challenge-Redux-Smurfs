@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
-import { } from "../actions";
+import { getSmurfs } from "../actions";
 import SmurfList from "./SmurfList";
 import SmurfForm from "./SmurfForm";
 
@@ -12,6 +12,10 @@ class App extends Component {
       age: null,
       height: "",
     }
+  }
+
+  componentDidMount() {
+    this.props.getSmurfs()
   }
 
   handleChanges = e => {
@@ -30,20 +34,33 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfList/>
-        <SmurfForm/>
+        {this.props.isFetchingSmurfs && "Wait while we fetch your data..."}
+        {this.props.smurfList && (
+          <SmurfList 
+            smurfList={this.props.smurfList} 
+          />
+        )}
+        {this.props.error && (
+          <p>{`${this.props.error}`}</p>
+        )}
+        <SmurfForm
+          handleChanges={this.handleChanges}
+          // addSmurf={this.addSmurf}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  //import state here
-}
+const mapStateToProps = state => ({
+  smurfList: state.smurfList,
+  isFetchingSmurfs: state.isFetchingSmurfs,
+  error: state.error
+})
 
 export default connect(
   mapStateToProps,
   {
-    //add action creators here
+    getSmurfs
   }
 )(App)
