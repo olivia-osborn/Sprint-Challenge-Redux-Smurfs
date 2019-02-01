@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    
+}
+
+form input {
+    margin-bottom: 5px;
+    background: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-smurf {
+    background: rgb(255, 117, 117);
+    border: 1px solid gray;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.add-smurf:hover {
+    background: rgb(255, 205, 205);
+    cursor: pointer;
+}

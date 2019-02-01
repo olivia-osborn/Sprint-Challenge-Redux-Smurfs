@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import "./App.css"
 import { connect } from "react-redux";
-import { getSmurfs, addNewSmurf,deleteSmurfAction } from "../actions";
-import SmurfList from "./SmurfList";
-import SmurfForm from "./SmurfForm";
+import { getSmurfs, addNewSmurf,deleteSmurfAction } from "../../actions";
+import SmurfList from "../SmurfList/SmurfList";
+import SmurfForm from "../SmurfForm/SmurfForm";
 
 class App extends Component {
   state = {
@@ -32,7 +32,6 @@ class App extends Component {
     this.state.smurf.age && 
     this.state.smurf.height && 
     this.props.addNewSmurf(this.state.smurf)
-
   }
 
   deleteSmurf = (e, idx) => {
@@ -44,6 +43,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="title">
+          <h1>Welcome to Smurf Village!</h1>
+          <h2>Meet the smurfs:</h2>
+        </div>
         {this.props.isFetchingSmurfs && "Wait while we fetch your data..."}
         {this.props.smurfList && (
           <SmurfList 
