@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
-import { getSmurfs, addNewSmurf } from "../actions";
+import { getSmurfs, addNewSmurf,deleteSmurfAction } from "../actions";
 import SmurfList from "./SmurfList";
 import SmurfForm from "./SmurfForm";
 
@@ -35,13 +35,20 @@ class App extends Component {
 
   }
 
+  deleteSmurf = (e, idx) => {
+    e.preventDefault();
+    console.log("index", idx)
+    this.props.deleteSmurfAction(idx)
+  }
+
   render() {
     return (
       <div className="App">
         {this.props.isFetchingSmurfs && "Wait while we fetch your data..."}
         {this.props.smurfList && (
           <SmurfList 
-            smurfList={this.props.smurfList} 
+            smurfList={this.props.smurfList}
+            deleteSmurf={this.deleteSmurf} 
           />
         )}
         {this.props.error && (
@@ -66,6 +73,7 @@ export default connect(
   mapStateToProps,
   {
     getSmurfs,
-    addNewSmurf
+    addNewSmurf,
+    deleteSmurfAction
   }
 )(App)

@@ -5,12 +5,16 @@ import {
   ADDING_SMURF_START,
   ADDING_SMURF_SUCCESS,
   ADDING_SMURF_FAILURE,
+  DELETING_SMURF_START,
+  DELETING_SMURF_SUCCESS,
+  DELETING_SMURF_FAILURE,
 } from "../actions";
 
 const initialState = {
   smurfList: [],
   isFetchingSmurfs: false,
   isAddingSmurf: false,
+  isDeletingSmurf: false,
   error: null,
 }
 
@@ -52,6 +56,28 @@ const smurfs = (state = initialState, action) => {
         isAddingSmurf: false,
         error: action.payload
       }
+    case DELETING_SMURF_START:
+      return {
+        ...state,
+        isDeletingSmurf: true
+      }
+    case DELETING_SMURF_SUCCESS:
+      console.log("success", action.payload)
+      return {
+        ...state,
+        isDeletingSmurf: false,
+        error: null,
+        smurfList: action.payload
+      }
+    case DELETING_SMURF_FAILURE:
+      console.log("failure", action.payload)
+      return {
+        ...state,
+        isDeletingSmurf: false,
+        error: action.payload
+      }
+
+
     default:
       return state;
   }

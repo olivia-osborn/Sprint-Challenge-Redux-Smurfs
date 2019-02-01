@@ -4,8 +4,11 @@ import Smurf from "./Smurf";
 function SmurfList(props) {
     return (
         <div>
-            {props.smurfList.map((smurf, index) => {
-                return <Smurf smurf={smurf} key={index} />
+            {props.smurfList.map((smurf) => {
+                return <Smurf 
+                    smurf={smurf} 
+                    key={smurf.id} 
+                    deleteSmurf={props.deleteSmurf}/>
             })}
         </div>
     )
